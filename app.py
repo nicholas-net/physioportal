@@ -7,10 +7,11 @@ except:
 
 with conn.cursor() as cur:
     try:
-        cur.execute("""CREATE TABLE patients (patient_id SERIAL PRIMARY KEY, first_name VARCHAR(255) NOT NULL, last_name VARCHAR(255) NOT NULL, 
-            date_of_birth DATE NOT NULL,  medical_history VARCHAR(255));""")
+        cur.execute("""CREATE TABLE patient_programs (program_id SERIAL PRIMARY KEY, patient_id INTEGER REFERENCES patients(patient_id), 
+        exercise_id INTEGER REFERENCES exercises(exercise_id));""")
         conn.commit()
         conn.close()
         cur.close()
+        print("Query executed")
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
