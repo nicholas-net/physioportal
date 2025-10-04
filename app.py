@@ -8,7 +8,7 @@ except:
 with conn.cursor() as cur:
     try:
         cur.execute("""ALTER TABLE patient_programs 
-            ADD COLUMN IF NOT EXISTS reps INTEGER NOT NULL""")
+            ADD COLUMN IF NOT EXISTS position VARCHAR(255)""")
         conn.commit()
         conn.close()
         cur.close()
