@@ -7,7 +7,8 @@ except:
 
 with conn.cursor() as cur:
     try:
-        cur.execute("""CREATE TABLE exercises (exercise_id SERIAL PRIMARY KEY, exercise_name VARCHAR(255) NOT NULL);""")
+        cur.execute("""CREATE TABLE patient_programs (program_id SERIAL PRIMARY KEY, patient_id INTEGER REFERENCES patients(patient_id), 
+        exercise_id INTEGER REFERENCES exercises(exercise_id));""")
         conn.commit()
         conn.close()
         cur.close()
