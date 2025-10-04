@@ -7,8 +7,8 @@ except:
 
 with conn.cursor() as cur:
     try:
-        cur.execute("""ALTER TABLE patient_programs 
-            ADD COLUMN IF NOT EXISTS position VARCHAR(255)""")
+        cur.execute("""CREATE TABLE users (user_id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY, username VARCHAR(255) NOT NULL, password VARCHAR(255) NOT NULL, 
+            date_created TIMESTAMP NOT NULL DEFAULT(CURRENT_TIMESTAMP), last_updated TIMESTAMP NOT NULL DEFAULT(CURRENT_TIMESTAMP));""")
         conn.commit()
         conn.close()
         cur.close()
@@ -16,5 +16,3 @@ with conn.cursor() as cur:
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
 
-
-# Fix patient progarm table . add sets, reps
