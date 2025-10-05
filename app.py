@@ -7,8 +7,7 @@ except:
 
 with conn.cursor() as cur:
     try:
-        cur.execute("""CREATE TABLE users (user_id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY, username VARCHAR(255) NOT NULL, password VARCHAR(255) NOT NULL, 
-            date_created TIMESTAMP NOT NULL DEFAULT(CURRENT_TIMESTAMP), last_updated TIMESTAMP NOT NULL DEFAULT(CURRENT_TIMESTAMP));""")
+        cur.execute("""ALTER TABLE patients ALTER COLUMN patient_id SET ;""")
         conn.commit()
         conn.close()
         cur.close()
