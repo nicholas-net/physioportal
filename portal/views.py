@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 
-def home_page_view(request):
+def login_view(request):
     """
     Handles requests for the home page resource.
 
@@ -12,4 +12,4 @@ def home_page_view(request):
     Returns:
         HttResponse object for the portal homepage
     """
-    return HttpResponse("Portal Homepage")
+    return HttpResponse("login page/homepage")
