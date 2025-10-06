@@ -3,16 +3,8 @@ from django.http import HttpResponse
 from django.template import loader
 
 
-def login_view(request):
-    """
-    Users are routed to the log-in page for authentication
+def homepage_view(request):
 
-    Args:
-        request: HttpRequest object
-
-    Returns:
-        HttResponse object for the portal log-in page
-    """
-
-    template = loader.get_template("login.html")
+    template = loader.get_template("portal/homepage.html")
     return HttpResponse(template.render())
+
