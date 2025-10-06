@@ -21,10 +21,8 @@ from django.urls import path, include
 The initial entry point for all URL requests
 """
 urlpatterns = [
-    # If a requests path starts with admin, then route it to Django's built-in admin site
-    path('admin/', admin.site.urls),
-    path('', include('portal.urls')),
-
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('accounts/', include('accounts.urls')),
+    path("admin/", admin.site.urls),
+    path("", include("portal.urls")),
+    path("accounts/", include("django.contrib.auth.urls")),
+    path("accounts/", include("accounts.urls")),
 ]
