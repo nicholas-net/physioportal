@@ -23,6 +23,6 @@ The initial entry point for all URL requests
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("portal.urls")),
-    path("accounts/", include("django.contrib.auth.urls")),
-    path("accounts/", include("accounts.urls")),
+    path("authenticate/", include("django.contrib.auth.urls")),
+    path("authenticate/", include("accounts.urls")),
 ]
