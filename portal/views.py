@@ -1,15 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.template import loader
 
 
-def home_page_view(request):
-    """
-    Handles requests for the home page resource.
+def homepage_view(request):
 
-    Args:
-        request: HttpRequest object
+    template = loader.get_template("portal/homepage.html")
+    return HttpResponse(template.render())
 
-    Returns:
-        HttResponse object for the portal homepage
-    """
-    return HttpResponse("Portal Homepage")

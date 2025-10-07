@@ -17,10 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+"""
+The initial entry point for all URL requests
+"""
 urlpatterns = [
-    # If a requests path starts with admin, then route it to Django's built-in admin site
-    path('admin/', admin.site.urls),
+    path("admin/", admin.site.urls),
     path("", include("portal.urls")),
-
-
+    path("authenticate/", include("django.contrib.auth.urls")),
+    path("authenticate/", include("accounts.urls")),
 ]

@@ -1,12 +1,7 @@
 from django.urls import path
-from .views import home_page_view
-# Tells Django to look within our current directory for a view.py file
 
-"""
-path function anatomy:
-    - the route itself
-    - reference to the view function
-"""
+from .views import homepage_view
+
 urlpatterns = [
-    path("", home_page_view)
+    path("", homepage_view)
 ]
