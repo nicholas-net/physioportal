@@ -6,7 +6,7 @@ from django.utils.translation import gettext_lazy as _
 
 
 class Exercise(models.Model):
-    #Enums for consistent choices
+    # Provides pre-defined consistent choices for parts of the body exercises will be targeting
     class BodyPart(models.TextChoices):
         HAND = "HA", _("Wrist")
         LEG = "LE", _("Leg")
@@ -15,13 +15,26 @@ class Exercise(models.Model):
         FOOT = "FO", _("Foot")
         SHOULDER = "SH", _("Shoulder")
         ARM = "AR", _("Arm")
+        GLUTE = "GL", _("Glute")
         CORE = "CO", _("Core")
+
+    class Equipment(models.TextChoices):
+        # Commonly used exercise equipment at the clinic
+        DUMBBELLS = "DB", _("Dumbbells")
+        PHYSIOBALL = "PB", _("Physioball")
+        STRAP = "ST", _("Strap")
+        THERABAND = "TB", _("Theraband")
+        BIKE = "BK", _("Bike")
+        TREADMILL = "TM", _("Treadmill")
+        ANKLEWEIGHT = "AW", _("Ankle Weight")
+        OTHER = "OT", _("Other")
+        NONE = "NO", _("None")
 
     name = models.CharField(max_length=255)
     body_part = models.CharField(max_length=2, choices=BodyPart, default=BodyPart.CORE)
     type = models.CharField(max_length=255)
     instructions = models.TextField()
-    equipment = models.CharField(max_length=255)
+    equipment = models.CharField(max_length=2, choices=Equipment, default=Equipment.NONE)
 
 # Patient inherits the functionalities to interact with the database
 class Patient(models.Model):
