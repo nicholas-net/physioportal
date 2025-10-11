@@ -18,6 +18,14 @@ class Exercise(models.Model):
         GLUTE = "GL", _("Glute")
         CORE = "CO", _("Core")
 
+    class Category(models.TextChoices):
+        # All the categories the clinic uses for each exercise
+        STRETCH = "ST", _("Stretch")
+        STRENGTH = "SN", _("Strength")
+        CONDITION = "CO", _("Condition")
+        BALANCE = "BA", _("Balance")
+        OTHER = "OT", _("Other")
+
     class Equipment(models.TextChoices):
         # Commonly used exercise equipment at the clinic
         DUMBBELLS = "DB", _("Dumbbells")
@@ -32,8 +40,8 @@ class Exercise(models.Model):
 
     name = models.CharField(max_length=255)
     body_part = models.CharField(max_length=2, choices=BodyPart, default=BodyPart.CORE)
-    type = models.CharField(max_length=255)
-    instructions = models.TextField()
+    category = models.CharField(max_length=255, choices=Category, default=Category.OTHER)
+    instructions = models.TextField(blank=True, default="")
     equipment = models.CharField(max_length=2, choices=Equipment, default=Equipment.NONE)
 
 # Patient inherits the functionalities to interact with the database
@@ -58,11 +66,21 @@ class Program(models.Model):
     Deleting a patient or exercise will result in related records
     linked to that model being deleted
     """
+
+    class Position(models.TextChoices):
+        SUPINE = "SU", _("Supine")
+        PRONE = "PR", _("Prone")
+        LATERAL = "LA", _("Lateral")
+        STANDING = "ST", _("Standing")
+        SITTING = "SI", _("Sitting")
+        # Theres non-common use position types that are rarely used, so other should suffice for those rare use cases
+        OTHER = "OT", _("Other")
+
     patient = models.ForeignKey(Patient, on_delete=CASCADE)
     exercise = models.ForeignKey(Exercise, on_delete=CASCADE)
     sets = models.IntegerField(validators=[validate_min])
     reps = models.IntegerField(validators=[validate_min])
-    duration = models.IntegerField(validators=[validate_min])
-    position = models.CharField(max_length=255)
+    duration = models.IntegerField(validators=[validate_min], null=True, default=None)
+    position = models.CharField(max_length=255, choices=Position, default=Position.OTHER)
 
 
