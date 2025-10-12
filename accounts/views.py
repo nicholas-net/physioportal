@@ -14,5 +14,5 @@ def login_view(request):
         HttResponse object for the portal log-in page
     """
 
-    template = loader.get_template("accounts/login.html")
+    template = loader.get_template("authenticate/login.html")
     return HttpResponse(template.render())
