@@ -63,8 +63,7 @@ def validate_min(value):
 
 class Program(models.Model):
     """
-    Deleting a patient or exercise will result in related records
-    linked to that model being deleted
+    Deleting a patient or exercise will result in related records linked to that model being deleted
     """
 
     class Position(models.TextChoices):
@@ -73,7 +72,7 @@ class Program(models.Model):
         LATERAL = "LA", _("Lateral")
         STANDING = "ST", _("Standing")
         SITTING = "SI", _("Sitting")
-        # Theres non-common use position types that are rarely used, so other should suffice for those rare use cases
+        # There's non-common use position types that are rarely used, so other should suffice for those rare use cases
         OTHER = "OT", _("Other")
 
     patient = models.ForeignKey(Patient, on_delete=CASCADE)
