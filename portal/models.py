@@ -80,6 +80,6 @@ class Program(models.Model):
     sets = models.IntegerField(validators=[validate_min])
     reps = models.IntegerField(validators=[validate_min])
     duration = models.IntegerField(validators=[validate_min], null=True, default=None)
-    position = models.CharField(max_length=255, choices=Position, default=Position.OTHER)
+    position = models.CharField(max_length=2, choices=Position, default=Position.OTHER)
 
 
