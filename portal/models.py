@@ -6,6 +6,10 @@ from django.utils.translation import gettext_lazy as _
 
 
 class Exercise(models.Model):
+
+    def __str__(self):
+        return self.name
+
     # Provides pre-defined consistent choices for parts of the body exercises will be targeting
     class BodyPart(models.TextChoices):
         HAND = "HA", _("Wrist")
@@ -30,7 +34,7 @@ class Exercise(models.Model):
     class Equipment(models.TextChoices):
         # Commonly used exercise equipment at the clinic
         DUMBBELLS = "DB", _("Dumbbells")
-        BALL = "EB", _("Exercise Ball")
+        BALL = "EB", _("Ball")
         YOGABALL = "YB", _("Yoga Ball")
         STRAP = "ST", _("Strap")
         THERABAND = "TB", _("Theraband")
@@ -48,6 +52,10 @@ class Exercise(models.Model):
 
 # Patient inherits the functionalities to interact with the database
 class Patient(models.Model):
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
+
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     date_of_birth = models.DateField()
