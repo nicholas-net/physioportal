@@ -54,7 +54,8 @@ class Patient(models.Model):
     # Establish one-to-one relationship with user model
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
     # Program hasn't been defined yet so program is referenced lazily
-    programs = models.ManyToManyField(Exercise, through="Program")
+    # This means that a Patient can have many Exercises, linked through the Program Table
+    programs = models.ManyToManyField(Exercise, through="Program", related_name="patients")
 
 # negative set and rep counts doesn't make any sense
 def validate_min(value):
