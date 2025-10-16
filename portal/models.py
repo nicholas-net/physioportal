@@ -17,6 +17,7 @@ class Exercise(models.Model):
         ARM = "AR", _("Arm")
         GLUTE = "GL", _("Glute")
         CORE = "CO", _("Core")
+        HIP = "HI", _("Hip")
 
     class Category(models.TextChoices):
         # All the categories the clinic uses for each exercise
@@ -41,8 +42,8 @@ class Exercise(models.Model):
     name = models.CharField(max_length=255)
     body_part = models.CharField(max_length=2, choices=BodyPart, default=BodyPart.CORE)
     category = models.CharField(max_length=255, choices=Category, default=Category.OTHER)
-    instructions = models.TextField(blank=True, default="")
     equipment = models.CharField(max_length=2, choices=Equipment, default=Equipment.NONE)
+    instructions = models.TextField(blank=True, default="")
 
 # Patient inherits the functionalities to interact with the database
 class Patient(models.Model):
