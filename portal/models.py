@@ -30,7 +30,8 @@ class Exercise(models.Model):
     class Equipment(models.TextChoices):
         # Commonly used exercise equipment at the clinic
         DUMBBELLS = "DB", _("Dumbbells")
-        PHYSIOBALL = "PB", _("Physioball")
+        BALL = "EB", _("Exercise Ball")
+        YOGABALL = "YB", _("Yoga Ball")
         STRAP = "ST", _("Strap")
         THERABAND = "TB", _("Theraband")
         BIKE = "BK", _("Bike")
